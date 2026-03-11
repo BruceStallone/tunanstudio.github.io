@@ -2,6 +2,7 @@ import './i18n.js';
 import './router.js';
 import './animation.js';
 import './floating-images.js';
+import './hero-video.js';
 
 class App {
   constructor() {
@@ -17,6 +18,7 @@ class App {
     this.initLanguageSwitcher();
     this.initLogoUpload();
     this.initFloatingImages();
+    this.initHeroVideo();
     window.heroAnimations.init();
     window.lazyImageLoader.init();
     window.dissolveAnimationManager.init();
@@ -365,6 +367,12 @@ class App {
     window.floatingImagesInstance = new window.FloatingImages(config);
   }
 
+  initHeroVideo() {
+    if (window.heroVideoBackground) {
+      window.heroVideoBackground.init();
+    }
+  }
+
   getFloatingImageRotationConfig() {
     try {
       const stored = localStorage.getItem('floatingImageRotationEnabled');
@@ -469,6 +477,7 @@ class App {
     }
 
     this.initFloatingImages();
+    this.initHeroVideo();
     window.heroAnimations.init();
     window.lazyImageLoader.init();
     window.dissolveAnimationManager.init();
@@ -502,12 +511,34 @@ class App {
   getHomeTemplate() {
     return `
       <section class="hero" id="hero">
-        <div class="hero-bg">
-          <picture>
-            <source srcset="img/hero/hero-bg@3x.webp 3x, img/hero/hero-bg@2x.webp 2x, img/hero/hero-bg.webp" type="image/webp">
-            <source srcset="img/hero/hero-bg@3x.jpg 3x, img/hero/hero-bg@2x.jpg 2x, img/hero/hero-bg.jpg" type="image/jpeg">
-            <img src="img/hero/hero-bg.jpg" alt="" class="hero-bg-img" loading="eager">
-          </picture>
+        <div class="hero-bg" id="hero-bg">
+          <div class="hero-video-container" id="hero-video-container">
+            <video 
+              id="hero-video"
+              class="hero-video"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="auto"
+              poster="img/hero/hero-bg.jpg"
+              data-video-config='{
+                "src": "video/hero.mp4",
+                "webmSrc": "video/hero.webm",
+                "poster": "img/hero/hero-bg.jpg",
+                "muted": true,
+                "loop": true,
+                "preload": "auto",
+                "objectFit": "cover",
+                "zIndex": 0,
+                "overlayOpacity": 0.5
+              }'
+            >
+              <source src="video/hero.webm" type="video/webm">
+              <source src="video/hero.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-fallback" id="hero-video-fallback"></div>
+          </div>
           <div class="hero-overlay"></div>
           <div class="floating-images-container" id="floating-images-container"></div>
         </div>
@@ -629,6 +660,7 @@ class App {
 
   attachHomeEvents() {
     this.initNavigation();
+    this.initHeroVideo();
     window.heroAnimations.init();
     window.dissolveAnimationManager.init();
   }
