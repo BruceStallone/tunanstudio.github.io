@@ -24,6 +24,7 @@ class FloatingImages {
     this.imageStates = [];
     this.textBounds = null;
     this.debugMode = options.debugMode || false;
+    this._onVisibilityChange = null;
 
     this.dragState = {
       isDragging: false,
@@ -263,7 +264,11 @@ class FloatingImages {
   }
 
   setupVisibilityObserver() {
-    document.addEventListener('visibilitychange', () => {
+    if (this._onVisibilityChange) {
+      document.removeEventListener('visibilitychange', this._onVisibilityChange);
+    }
+
+    this._onVisibilityChange = () => {
       this.isPageVisible = !document.hidden;
       if (this.isPageVisible) {
         this.lastTimestamp = 0;
@@ -271,7 +276,9 @@ class FloatingImages {
       } else {
         this.stopAnimation();
       }
-    });
+    };
+
+    document.addEventListener('visibilitychange', this._onVisibilityChange);
   }
 
   getRandomPosition(containerRect, imgWidth, imgHeight) {
@@ -658,6 +665,11 @@ class FloatingImages {
 
   destroy() {
     this.stopAnimation();
+
+    if (this._onVisibilityChange) {
+      document.removeEventListener('visibilitychange', this._onVisibilityChange);
+      this._onVisibilityChange = null;
+    }
 
     this.imageElements.forEach((imgWrapper) => {
       if (imgWrapper._handleMove) {
