@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="图南工作室 - 用游戏讲述故事">
+  <meta name="theme-color" content="#2D3436">
+  
+  <title>图南工作室 TunanStudio</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <script nomodule src="js/bundle.min.js"></script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">跳转到主要内容</a>
+  
+  <header class="navbar" role="banner">
+    <nav class="navbar-container" role="navigation" aria-label="主导航">
+      <ul class="navbar-nav">
+        <li><a href="/" class="nav-link" data-nav="home" data-i18n="nav.home">首页</a></li>
+        <li><a href="/products" class="nav-link" data-nav="products" data-i18n="nav.products">产品介绍</a></li>
+        <li><a href="/team" class="nav-link" data-nav="team" data-i18n="nav.team">团队介绍</a></li>
+      </ul>
+      
+      <div class="navbar-actions">
+        <div class="language-switcher" role="group" aria-label="语言切换">
+          <button class="lang-btn active" data-lang="zh-CN" aria-label="切换到中文" aria-pressed="true">中文</button>
+          <button class="lang-btn" data-lang="en" aria-label="Switch to English" aria-pressed="false">English</button>
+        </div>
+        
+        <button class="mobile-menu-toggle" aria-label="打开菜单" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="menu-icon"></span>
+        </button>
+      </div>
+    </nav>
+    
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+      <ul class="mobile-nav">
+        <li><a href="/products" class="mobile-nav-link" data-nav="products" data-i18n="nav.products">产品介绍</a></li>
+        <li><a href="/team" class="mobile-nav-link" data-nav="team" data-i18n="nav.team">团队介绍</a></li>
+      </ul>
+      <div class="mobile-lang-switcher">
+        <button class="lang-btn active" data-lang="zh-CN">中文</button>
+        <button class="lang-btn" data-lang="en">English</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" role="main">
+    <section class="hero" id="hero">
+      <div class="hero-bg">
+        <picture>
+          <source srcset="img/hero/hero-bg@3x.webp 3x, img/hero/hero-bg@2x.webp 2x, img/hero/hero-bg.webp" type="image/webp">
+          <source srcset="img/hero/hero-bg@3x.jpg 3x, img/hero/hero-bg@2x.jpg 2x, img/hero/hero-bg.jpg" type="image/jpeg">
+          <img src="img/hero/hero-bg.jpg" alt="" class="hero-bg-img" width="2560" height="1440" loading="eager" fetchpriority="high">
+        </picture>
+        <div class="hero-overlay"></div>
+        <div class="floating-images-container" id="floating-images-container"></div>
+      </div>
+      
+      <div class="hero-content">
+        <h1 class="brand-title">
+          <span class="brand-cn" data-i18n="brand.cn">图南工作室</span>
+          <span class="brand-divider">|</span>
+          <span class="brand-en" data-i18n="brand.en">TunanStudio</span>
+        </h1>
+        <p class="brand-tagline" data-i18n="brand.tagline">用游戏讲述故事</p>
+        
+        <div class="hero-actions">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <p class="footer-copyright" data-i18n="footer.copyright">© 2024 图南工作室 TunanStudio. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="script/main.js"></script>
+</body>
+</html>

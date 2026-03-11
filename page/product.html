@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="图南工作室产品介绍 - 探索我们精心打造的沉浸式游戏世界">
+  <meta name="theme-color" content="#2D3436">
+  
+  <title>产品介绍 - 图南工作室</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../css/styles.css">
+  
+  <script nomodule src="../js/bundle.min.js"></script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">跳转到主要内容</a>
+  
+  <header class="navbar" role="banner">
+    <nav class="navbar-container" role="navigation" aria-label="主导航">     
+      <ul class="navbar-nav">
+        <li><a href="/" class="nav-link" data-nav="home" data-i18n="nav.home">首页</a></li>
+        <li><a href="/products" class="nav-link" data-nav="products" data-i18n="nav.products">产品介绍</a></li>
+        <li><a href="/team" class="nav-link" data-nav="team" data-i18n="nav.team">团队介绍</a></li>
+      </ul>
+      
+      <div class="navbar-actions">
+        <div class="language-switcher" role="group" aria-label="语言切换">
+          <button class="lang-btn active" data-lang="zh-CN" aria-label="切换到中文" aria-pressed="true">中文</button>
+          <button class="lang-btn" data-lang="en" aria-label="Switch to English" aria-pressed="false">English</button>
+        </div>
+        
+        <button class="mobile-menu-toggle" aria-label="打开菜单" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="menu-icon"></span>
+        </button>
+      </div>
+    </nav>
+    
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+      <ul class="mobile-nav">
+        <li><a href="/products" class="mobile-nav-link" data-nav="products" data-i18n="nav.products">产品介绍</a></li>
+        <li><a href="/team" class="mobile-nav-link" data-nav="team" data-i18n="nav.team">团队介绍</a></li>
+      </ul>
+      <div class="mobile-lang-switcher">
+        <button class="lang-btn active" data-lang="zh-CN">中文</button>
+        <button class="lang-btn" data-lang="en">English</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" role="main">
+    <section class="page products-page">
+      <div class="container">
+        <header class="page-header">
+          <h1 class="page-title" data-i18n="products.title">我们的游戏</h1>
+          <p class="page-subtitle" data-i18n="products.subtitle">探索我们精心打造的沉浸式游戏世界</p>
+        </header>
+        
+        <div class="products-grid">
+          <article class="product-card" data-animate data-has-hover="false">
+            <div class="product-image">
+              <a href="https://store.steampowered.com/app/3252050" data-image-link="https://store.steampowered.com/app/3252050" target="_blank" rel="noopener noreferrer" aria-label="查看博物魅影详情">
+                <picture>
+                  <source srcset="../img/hero/product-1@3x.webp 3x, ../img/hero/product-1@2x.webp 2x, ../img/hero/product-1.webp" type="image/webp">
+                  <img class="product-img-default" src="../img/hero/product-1.jpg" alt="博物魅影游戏截图" loading="lazy">
+                </picture>
+              </a>
+            </div>
+            <div class="product-info">
+              <h2 class="product-title">博物魅影</h2>
+              <p class="product-description">2D角色扮演解谜游戏</p>
+              <div class="product-tags">
+                <span class="tag">2D</span>
+                <span class="tag">角色扮演</span>
+                <span class="tag">解谜</span>
+              </div>
+            </div>
+          </article>
+          
+          <article class="product-card" data-animate data-has-hover="true">
+            <div class="product-image">
+              <a href="https://store.steampowered.com/app/4030660" data-image-link="https://store.steampowered.com/app/4030660" target="_blank" rel="noopener noreferrer" aria-label="查看花城秘事详情">
+                <picture>
+                  <source srcset="../img/hero/product-2@3x.webp 3x, ../img/hero/product-2@2x.webp 2x, ../img/hero/product-2.webp" type="image/webp">
+                  <source srcset="../img/hero/product-2@3x.jpg 3x, ../img/hero/product-2@2x.jpg 2x, ../img/hero/product-2.jpg" type="image/jpeg">
+                  <img class="product-img-default" src="../img/hero/product-2.jpg" alt="花城秘事游戏截图" loading="lazy">
+                  <img class="product-img-hover" src="../img/hero/product-2-hover.webp" alt="花城秘事游戏截图" loading="lazy">
+                </picture>
+              </a>
+            </div>
+            <div class="product-info">
+              <h2 class="product-title">花城秘事</h2>
+              <p class="product-description">2D剧情视觉小说游戏</p>
+              <div class="product-tags">
+                <span class="tag">2D</span>
+                <span class="tag">剧情</span>
+                <span class="tag">视觉小说</span>
+              </div>
+            </div>
+          </article>
+          
+          <article class="product-card" data-animate data-has-hover="false">
+            <div class="product-image">
+              <picture>
+                <source srcset="../img/hero/product-3@3x.webp 3x, ../img/hero/product-3@2x.webp 2x, ../img/hero/product-3.webp" type="image/webp">
+                <img src="../img/hero/product-3.jpg" alt="游戏截图" loading="lazy">
+              </picture>
+            </div>
+            <div class="product-info">
+              <h2 class="product-title"></h2>
+              <p class="product-description"></p>
+              <div class="product-tags">
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <p class="footer-copyright" data-i18n="footer.copyright">© 2024 图南工作室 TunanStudio. All rights reserved.</p>
+      <nav class="footer-nav" aria-label="底部导航">
+        <a href="#" class="footer-link" data-i18n="footer.privacy">隐私政策</a>
+        <a href="#" class="footer-link" data-i18n="footer.terms">服务条款</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script type="module" src="../script/main.js"></script>
+</body>
+</html>

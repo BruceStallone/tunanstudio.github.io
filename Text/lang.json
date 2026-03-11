@@ -1,0 +1,77 @@
+{
+  "brand": {
+    "cn": "图南工作室",
+    "en": "TunanStudio",
+    "tagline": "探索叙事的无限可能"
+  },
+  "nav": {
+    "products": "游戏",
+    "team": "团队介绍",
+    "home": "首页"
+  },
+  "hero": {
+    "title": "探索游戏世界",
+    "subtitle": "创新·沉浸·超越",
+    "scroll": "向下滚动"
+  },
+  "products": {
+    "title": "我们的游戏",
+    "subtitle": "探索我们精心打造的沉浸式游戏世界",
+    "items": [
+      {
+        "id": "1",
+        "title": "博物魅影",
+        "description": "《博物魅影》是一款结合了解谜和探险元素的独立游戏。玩家将扮演希音，一名来自花城市的女高中生，她在一次偶然的机会中发现了博物馆中隐藏的秘密，以及一个神秘的男孩，他的出现似乎与博物馆中即将发生的一系列奇异事件有关。",
+        "tags": ["2D", "角色扮演", "解谜"],
+        "link": "https://store.steampowered.com/app/3252050",
+        "hasHoverImage": true
+      },
+      {
+        "id": "2", 
+        "title": "花城秘事",
+        "description": "花城少女徐梓卿意外被绑入殡仪馆，侥幸得救后父亲又离奇失踪，在一次奇遇中徐梓卿偶然获得了「开阴眼」的能力，她是否能找出父亲失踪的真相，以及揭开过去沉重的涟漪？",
+        "tags": ["2S", "剧情", "视觉小说"],
+        "link": "https://store.steampowered.com/app/4030660",
+        "hasHoverImage": true
+      }
+    ]
+  },
+  "team": {
+    "title": "创始团队",
+    "members": [
+      {
+        "id": "1",
+        "name": "金迪",
+        "role": "话事人",
+        "description": ""
+      },
+      {
+        "id": "2",
+        "name": "好松弟（AKA东山史泰龙）",
+        "role": "什么都负责一点",
+        "description": "流浪艺术家"
+      },
+      {
+        "id": "3",
+        "name": "金普希&金普顿",
+        "role": "项目管理&鼓励师&御用模特&背锅专员",
+        "description": "劣迹斑斑的员工，已被列入行业黑名单"
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "© 2024 图南工作室 TunanStudio. All rights reserved.",
+    "privacy": "隐私政策",
+    "terms": "服务条款"
+  },
+  "common": {
+    "loading": "加载中...",
+    "error": "出错了",
+    "retry": "重试",
+    "learnMore": "了解更多"
+  },
+  "language": {
+    "current": "中文",
+    "switch": "切换语言"
+  }
+}

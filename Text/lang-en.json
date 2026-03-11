@@ -1,0 +1,76 @@
+{
+  "brand": {
+    "cn": "图南工作室",
+    "en": "TunanStudio",
+    "tagline": "Exploring the Infinite Possibilities of Narrative"
+  },
+  "nav": {
+    "products": "Games",
+    "team": "Team",
+    "home": "Home"
+  },
+  "hero": {
+    "title": "Explore Gaming Worlds",
+    "subtitle": "Innovation·Immersion·Transcendence",
+    "scroll": "Scroll Down"
+  },
+  "products": {
+    "title": "Our Games",
+    "subtitle": "Discover our meticulously crafted immersive gaming experiences",
+    "items": [
+      {
+        "id": "1",
+        "title": "The Phantom Of The Museum",
+        "description": "The Phantom Of The Museum is an indie game that combines elements of puzzle solving and exploration.",
+        "tags": ["2d", "RPG", "Puzzle"],
+        "link": "https://store.steampowered.com/app/3252050",
+        "hasHoverImage": true
+      },
+      {
+        "id": "2",
+        "title": "The Tale of Spring City",
+        "description": "Ziqing Xu, a young girl from Spring City. Her father mysteriously disappeared soon after. During a strange turn of events, she suddenly gains the ability to see into the supernatural realm—the so-called \"Yin Yan.\" Will she be able to uncover the truth?",
+        "tags": ["2d", "Rich Story", "Interactive Fiction"],
+        "link": "https://store.steampowered.com/app/4030660",
+        "hasHoverImage": true
+      }
+    ]
+  },
+  "team": {
+    "title": "Our Team",
+    "members": [
+      {
+        "id": "1",
+        "name": "Kingdy Jin",
+        "role": "The Boss",
+        "description": ""
+      },
+      {
+        "id": "2",
+        "name": "Xin（好松弟）",
+        "role": "A little bit of everything",
+        "description": "Wandering artist"
+      },
+      {
+      "id": "3",
+      "name": "King Pussy & King Pton",
+      "role": "Project Manager & Motivator & Personal Model & Scapegoat",
+      "description": "Employees with a long list of misdeeds, have been blacklisted in the industry" }
+    ]
+  },
+  "footer": {
+    "copyright": "© 2024 TunanStudio. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error occurred",
+    "retry": "Retry",
+    "learnMore": "Learn More"
+  },
+  "language": {
+    "current": "English",
+    "switch": "Switch Language"
+  }
+}
