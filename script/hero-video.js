@@ -8,8 +8,10 @@ class HeroVideoBackground {
     this.hasError = false;
     this.isLoading = true;
     this.reducedMotion = false;
+    this.enableVideo = false;
     
     this.defaultConfig = {
+      enableVideo: false,
       src: 'video/hero.mp4',
       webmSrc: 'video/hero.webm',
       poster: 'img/hero/hero-bg.jpg',
@@ -41,6 +43,16 @@ class HeroVideoBackground {
       return;
     }
     
+    this.parseConfig();
+    this.enableVideo = this.config.enableVideo;
+    
+    if (!this.enableVideo) {
+      console.log('[HeroVideo] enableVideo 设置为 false，使用静态海报背景');
+      this.applyPosterOnly();
+      this.isInitialized = true;
+      return;
+    }
+    
     this.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     
     if (this.reducedMotion) {
@@ -49,13 +61,36 @@ class HeroVideoBackground {
       return;
     }
     
-    this.parseConfig();
     this.applyConfig();
     this.bindEvents();
     this.startLoading();
     
     this.isInitialized = true;
     console.log('[HeroVideo] 视频背景初始化完成');
+  }
+  
+  applyPosterOnly() {
+    this.video.style.display = 'none';
+    const sources = this.video.querySelectorAll('source');
+    sources.forEach(source => {
+      source.src = '';
+    });
+    this.video.src = '';
+    this.video.load = function() {};
+    
+    if (this.fallback && this.config.fallbackBgImage) {
+      this.fallback.style.backgroundImage = `url('${this.config.fallbackBgImage}')`;
+    }
+    if (this.fallback && this.config.fallbackBgColor) {
+      this.fallback.style.backgroundColor = this.config.fallbackBgColor;
+    }
+    
+    const overlay = document.querySelector('.hero-overlay');
+    if (overlay && this.config.overlayOpacity !== undefined) {
+      overlay.style.setProperty('--overlay-opacity', this.config.overlayOpacity);
+    }
+    
+    this.showFallback();
   }
   
   parseConfig() {

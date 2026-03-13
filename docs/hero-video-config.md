@@ -58,11 +58,7 @@ OFFICIALWEB/
     "preload": "auto",
     "objectFit": "cover",
     "zIndex": 0,
-    "overlayOpacity": 0.5,
-    "fallbackBgColor": "#1A1A1A",
-    "fallbackBgImage": "img/hero/hero-bg.jpg",
-    "loadTimeout": 10000,
-    "retryAttempts": 2
+    "overlayOpacity": 0.5
   }'
 >
 ```
@@ -71,6 +67,7 @@ OFFICIALWEB/
 
 | 参数 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
+| `enableVideo` | boolean | `true` | 是否启用视频播放。为 `false` 时只显示海报图片，彻底跳过视频文件 I/O，适用于需要禁用视频的场景 |
 | `src` | string | `video/hero.mp4` | MP4 视频源路径 |
 | `webmSrc` | string | `video/hero.webm` | WebM 视频源路径 |
 | `poster` | string | `img/hero/hero-bg.jpg` | 视频封面图片路径 |
@@ -207,6 +204,32 @@ window.updateHeroVideoConfig({
   overlayOpacity: 0.7
 });
 ```
+
+### 禁用视频功能（只显示海报）
+
+当需要禁用视频播放时，可以设置 `enableVideo` 为 `false`：
+
+```html
+<video 
+  id="hero-video"
+  data-video-config='{
+    "enableVideo": false,
+    "poster": "img/hero/hero-bg.jpg"
+  }'
+>
+</video>
+```
+
+效果：
+- 视频元素将被隐藏 (`display: none`)
+- 不会发起任何视频文件请求
+- 直接显示海报图片作为背景
+- 彻底跳过 `video` 目录下的所有视频文件扫描
+
+性能影响：
+- **节省网络带宽**：不加载任何视频文件
+- **加快首屏渲染**：跳过视频加载和初始化流程
+- **降低内存占用**：无需维护视频播放状态
 
 ### 手动控制播放
 
@@ -406,4 +429,5 @@ A: 确保：
 
 ## 更新日志
 
+- **v1.1.0** - 新增 `enableVideo` 控制开关，支持禁用视频播放功能
 - **v1.0.0** - 初始版本，支持视频背景、错误降级、响应式布局
