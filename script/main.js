@@ -154,7 +154,6 @@ class App {
         console.log(`[App] Switching to: ${lang}`);
         await window.i18n.switchLanguage(lang);
         this.updateLanguageButtons();
-        this.showToast(`语言已切换为 ${lang === 'en' ? 'English' : '中文'}`);
         console.log(`[App] Language switched to ${lang}`);
       } catch (error) {
         console.error(`[App] Failed to switch language:`, error);
