@@ -1,0 +1,14 @@
+# SVG MIME Type
+AddType image/svg+xml svg
+
+# Enable CORS for SVG files
+<FilesMatch "\.svg$">
+  Header set Access-Control-Allow-Origin "*"
+</FilesMatch>
+
+# Cache SVG files
+<IfModule mod_headers.c>
+  <FilesMatch "\.svg$">
+    Header set Cache-Control "max-age=31536000, public"
+  </FilesMatch>
+</IfModule>

@@ -34,7 +34,9 @@ class App {
       .addRoute('/products', () => this.renderProducts())
       .addRoute('/product', () => this.renderProducts())
       .addRoute('/team', () => this.renderTeam())
-      .addRoute('/social', () => this.renderSocial())
+      .addRoute('/team/intro', () => this.renderTeam())
+      .addRoute('/team/social', () => this.renderTeamSocial())
+      .addRoute('/social', () => this.renderTeamSocial())
       .beforeEach((path) => this.beforeRouteChange(path))
       .afterEach((path) => this.afterRouteChange(path))
       .init();
@@ -46,14 +48,81 @@ class App {
     document.addEventListener('click', (e) => {
       const btn = e.target.closest('[data-nav]');
       if (!btn) return;
-      e.preventDefault();
+
       const target = btn.dataset.nav;
+
+      if (target === 'team' && btn.classList.contains('nav-dropdown-toggle')) {
+        e.preventDefault();
+        this.toggleDropdown(btn);
+        return;
+      }
+
+      if (target === 'team' && btn.classList.contains('mobile-nav-dropdown-toggle')) {
+        e.preventDefault();
+        const dropdown = btn.closest('.mobile-nav-dropdown');
+        if (dropdown) {
+          this.toggleMobileDropdown(dropdown);
+        }
+        return;
+      }
+
+      if (target === 'team-intro') {
+        e.preventDefault();
+        this.navigateTo('team');
+        this.closeMobileMenu();
+        return;
+      }
+
+      if (target === 'team-social') {
+        e.preventDefault();
+        this.navigateTo('team-social');
+        this.closeMobileMenu();
+        return;
+      }
+
+      e.preventDefault();
       this.navigateTo(target);
       this.closeMobileMenu();
     });
 
     this.initMobileMenu();
+    this.initDesktopDropdown();
     this._navBound = true;
+  }
+
+  toggleDropdown(btn) {
+    const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', !isExpanded);
+  }
+
+  initDesktopDropdown() {
+    const dropdownToggle = document.querySelector('.nav-dropdown-toggle');
+    const dropdownMenu = document.querySelector('.nav-dropdown-menu');
+
+    if (!dropdownToggle || !dropdownMenu) return;
+
+    dropdownToggle.addEventListener('mouseenter', () => {
+      dropdownToggle.setAttribute('aria-expanded', 'true');
+    });
+
+    dropdownToggle.addEventListener('mouseleave', () => {
+      dropdownToggle.setAttribute('aria-expanded', 'false');
+    });
+
+    dropdownMenu.addEventListener('mouseenter', () => {
+      dropdownToggle.setAttribute('aria-expanded', 'true');
+    });
+
+    dropdownMenu.addEventListener('mouseleave', () => {
+      dropdownToggle.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  switchToSocialTab() {
+    const mobileDropdown = document.querySelector('.mobile-nav-dropdown');
+    if (mobileDropdown) {
+      mobileDropdown.classList.add('open');
+    }
   }
 
   initMobileMenu() {
@@ -106,7 +175,7 @@ class App {
   closeMobileMenu() {
     const menuToggle = document.querySelector('.mobile-menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
-    
+
     if (!menuToggle || !mobileMenu) return;
 
     mobileMenu.classList.remove('active');
@@ -114,6 +183,24 @@ class App {
     menuToggle.classList.remove('active');
     menuToggle.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
+
+    const mobileDropdowns = mobileMenu.querySelectorAll('.mobile-nav-dropdown');
+    mobileDropdowns.forEach(dropdown => {
+      dropdown.classList.remove('open');
+      const toggle = dropdown.querySelector('.mobile-nav-dropdown-toggle');
+      if (toggle) {
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  toggleMobileDropdown(dropdown) {
+    dropdown.classList.toggle('open');
+    const toggle = dropdown.querySelector('.mobile-nav-dropdown-toggle');
+    if (toggle) {
+      const isExpanded = dropdown.classList.contains('open');
+      toggle.setAttribute('aria-expanded', isExpanded);
+    }
   }
 
   initLanguageSwitcher() {
@@ -305,7 +392,7 @@ class App {
   }
 
   generateProductCards() {
-    const products = window.i18n.get('products.items');
+    const products = window.i18n.get('products.games');
     const sortedProducts = [...products].sort((a, b) => parseInt(b.id) - parseInt(a.id));
     return sortedProducts.map(product => {
       const hasHoverImage = product.hasHoverImage !== false;
@@ -374,7 +461,7 @@ class App {
         <article class="social-card" data-animate data-platform="${platform}">
           <a href="${platformData.link}" class="social-card-link" target="_blank" rel="noopener noreferrer" aria-label="${platformData.ariaLabel}">
             <div class="social-card-icon">
-              <img src="img/social/${platform}.svg" alt="${platformData.name}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <img src="/img/social/${platform}.svg" alt="${platformData.name}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
               <span class="social-icon-placeholder" style="display: none;">${placeholder}</span>
             </div>
             <div class="social-card-content">
@@ -404,7 +491,8 @@ class App {
       'xiaohongshu': '红',
       'weibo': '微',
       'douyin': '抖',
-      'aifadian': '爱'
+      'aifadian': '爱',
+      'steam': 'S'
     };
     return placeholders[platform] || platform.charAt(0).toUpperCase();
   }
@@ -594,7 +682,9 @@ class App {
       'products': '/products',
       'product': '/products',
       'team': '/team',
-      'social': '/social'
+      'team-intro': '/team',
+      'team-social': '/team/social',
+      'social': '/team/social'
     };
     
     const path = routes[target] || '/';
@@ -667,7 +757,18 @@ class App {
     }
   }
 
+  renderTeamSocial() {
+    const content = document.getElementById('main-content');
+    if (content) {
+      content.innerHTML = this.getTeamSocialTemplate();
+      this.attachTeamSocialEvents();
+    }
+  }
+
   attachSocialEvents() {
+  }
+
+  attachTeamSocialEvents() {
   }
 
   getHomeTemplate() {
@@ -734,7 +835,8 @@ class App {
    * 例如: product-2.jpg -> product-2@2x-hover.jpg
    */
   getProductsTemplate() {
-    const products = window.i18n.get('products.items');
+    const products = window.i18n.get('products.games');
+    const novels = window.i18n.get('products.novels');
     const sortedProducts = [...products].sort((a, b) => parseInt(b.id) - parseInt(a.id));
     const productCards = sortedProducts.map(product => {
       const hasHoverImage = product.hasHoverImage !== false;
@@ -772,6 +874,37 @@ class App {
       `;
     }).join('');
 
+    const novelCards = novels.items.map((novel, index) => {
+      const descriptionLines = novel.description.split('\n');
+      const descriptionHtml = descriptionLines.map(line => `<p class="book-card-desc-line">${line}</p>`).join('');
+      
+      const coverImage = novel.cover || `img/novels/novel-${novel.id}.jpg`;
+      
+      return `
+        <article class="book-card" data-animate>
+          <a href="${novel.link}" target="_blank" rel="noopener noreferrer" class="book-card-link" aria-label="阅读${novel.title}">
+            <div class="book-card-cover">
+              <img src="${coverImage}" alt="${novel.title}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'book-card-cover-placeholder\\'>${novel.title.charAt(0)}</div>'">
+            </div>
+          </a>
+          <div class="book-card-info">
+            <div class="book-card-header">
+              <h3 class="book-card-title" data-i18n="products.novels.items.${index}.title">${novel.title}</h3>
+              <div class="book-card-author" data-i18n="products.novels.items.${index}.author">${novel.author}</div>
+            </div>
+            <div class="book-card-description">
+              ${descriptionHtml}
+            </div>
+            <div class="book-card-meta">
+              <span class="book-card-genre" data-i18n="products.novels.items.${index}.genre">${novel.genre}</span>
+              <span class="book-card-status" data-i18n="products.novels.items.${index}.status">${novel.status}</span>
+              <span class="book-card-word-count" data-i18n="products.novels.items.${index}.wordCount">${novel.wordCount}</span>
+            </div>
+          </div>
+        </article>
+      `;
+    }).join('');
+
     return `
       <section class="page products-page">
         <div class="container">
@@ -781,6 +914,28 @@ class App {
           </header>
           <div class="products-grid">
             ${productCards}
+          </div>
+        </div>
+      </section>
+
+      <div class="scroll-indicator" onclick="document.querySelector('.novels-page').scrollIntoView({behavior: 'smooth'})">
+        <div class="scroll-indicator-circle">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </div>
+        <span class="scroll-indicator-text" data-i18n="common.scrollDown">向下滚动</span>
+      </div>
+
+      <section class="page novels-page">
+        <div class="container">
+          <header class="page-header">
+            <h2 class="page-title" data-i18n="products.novels.title">${novels.title}</h2>
+            <p class="page-subtitle" data-i18n="products.novels.subtitle">${novels.subtitle}</p>
+          </header>
+          
+          <div class="novels-grid">
+            ${novelCards}
           </div>
         </div>
       </section>
@@ -843,7 +998,7 @@ class App {
         <article class="social-card" data-animate data-platform="${platform}">
           <a href="${platformData.link}" class="social-card-link" target="_blank" rel="noopener noreferrer" aria-label="${platformData.ariaLabel}">
             <div class="social-card-icon">
-              <img src="img/social/${platform}.svg" alt="${platformData.name}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <img src="/img/social/${platform}.svg" alt="${platformData.name}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
               <span class="social-icon-placeholder" style="display: none;">${placeholder}</span>
             </div>
             <div class="social-card-content">
@@ -863,6 +1018,51 @@ class App {
 
     return `
       <section class="page social-page">
+        <div class="container">
+          <header class="page-header">
+            <h1 class="page-title" data-i18n="social.title">${socialData.title}</h1>
+            <p class="page-subtitle" data-i18n="social.subtitle">${socialData.subtitle}</p>
+          </header>
+          
+          <div class="social-grid">
+            ${socialCards}
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+  getTeamSocialTemplate() {
+    const socialData = window.i18n.get('social');
+    const platforms = this.getSocialPlatforms(socialData);
+    
+    const socialCards = platforms.map(platform => {
+      const platformData = socialData[platform];
+      const placeholder = this.getPlatformPlaceholder(platform);
+      return `
+        <article class="social-card" data-animate data-platform="${platform}">
+          <a href="${platformData.link}" class="social-card-link" target="_blank" rel="noopener noreferrer" aria-label="${platformData.ariaLabel}">
+            <div class="social-card-icon">
+              <img src="/img/social/${platform}.svg" alt="${platformData.name}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <span class="social-icon-placeholder" style="display: none;">${placeholder}</span>
+            </div>
+            <div class="social-card-content">
+              <h2 class="social-platform-name">${platformData.name}</h2>
+              <p class="social-platform-id">${platformData.id}</p>
+              <p class="social-platform-desc">${platformData.desc}</p>
+            </div>
+            <div class="social-card-arrow">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </a>
+        </article>
+      `;
+    }).join('');
+
+    return `
+      <section class="page team-social-page">
         <div class="container">
           <header class="page-header">
             <h1 class="page-title" data-i18n="social.title">${socialData.title}</h1>

@@ -5,8 +5,8 @@
     "tagline": "探索叙事的无限可能"
   },
   "nav": {
-    "products": "游戏",
-    "team": "团队介绍",
+    "products": "作品",
+    "team": "关于我们",
     "home": "首页",
     "social": "关注我们"
   },
@@ -16,14 +16,14 @@
     "scroll": "向下滚动"
   },
   "products": {
-    "title": "我们的游戏",
-    "subtitle": "探索我们精心打造的沉浸式游戏世界",
-    "items": [
+    "title": "游戏",
+    "subtitle": "已上架游戏",
+    "games": [
       {
         "id": "1",
         "title": "博物魅影",
         "description": "《博物魅影》是一款结合了解谜和探险元素的独立游戏。玩家将扮演希音，一名来自花城市的女高中生，她在一次偶然的机会中发现了博物馆中隐藏的秘密，以及一个神秘的男孩，他的出现似乎与博物馆中即将发生的一系列奇异事件有关。",
-        "tags": ["2D", "角色扮演", "解谜"],
+        "tags": ["2D", "角色扮演", "解谜","Steam"],
         "link": "https://store.steampowered.com/app/3252050",
         "hasHoverImage": true
       },
@@ -31,17 +31,42 @@
         "id": "2", 
         "title": "花城秘事",
         "description": "花城少女徐梓卿意外被绑入殡仪馆，侥幸得救后父亲又离奇失踪，在一次奇遇中徐梓卿偶然获得了「开阴眼」的能力，她是否能找出父亲失踪的真相，以及揭开过去沉重的涟漪？",
-        "tags": ["2S", "剧情", "视觉小说"],
+        "tags": ["2D", "剧情", "视觉小说","Steam"],
         "link": "https://store.steampowered.com/app/4030660",
         "hasHoverImage": true
+      },
+      {
+        "id": "3",
+        "title": "甲马牌",
+        "description": "甲马牌是一款策略型的卡牌构筑游戏，你可以在对局中通过发掘并配置源自云南大理的甲马牌，逆转乾坤，实现一连串令人心跳加速、酣畅淋漓的牌局。并且你还能通过构建金、木、水、火、土相生相克的特殊玩法，让你的牌局更上一筹！",
+        "tags": ["2D", "卡牌", "肉鸽","Steam"],
+        "link": "https://store.steampowered.com/app/",
+        "hasHoverImage": true
       }
-    ]
+    ],
+    "novels": {
+      "title": "小说",
+      "subtitle": "已出版小说",
+      "items": [
+        {
+          "id": "1",
+          "title": "花城秘事",
+          "author": "金迪",
+          "cover": "../img/novels/novel-1.jpg",
+          "description": "《花城秘事》游戏同名小说\n花城少女徐梓卿意外被绑入殡仪馆，侥幸得救后父亲又离奇失踪，在一次奇遇中徐梓卿偶然获得了「开阴眼」的能力，她是否能找出父亲失踪的真相，以及揭开过去沉重的涟漪？",
+          "genre": "都市异闻",
+          "wordCount": "已上架【微信读书】",
+          "status": "7.8万字",
+          "link": "https://weread.qq.com/web/reader/cee32f50813aba6d5g016697"
+        }
+      ]
+    }
   },
   "team": {
     "title": "创始团队",
     "sectionTitle": "关于图南工作室",
-    "intro": "我们是一支充满热情的游戏开发团队。自工作室成立以来，我们始终致力于打造具有独特美学风格和深刻情感共鸣的游戏作品。我们相信，每一款游戏都是一次全新的叙事冒险，而我们的目标就是让玩家在游戏中找到属于自己的故事与感动。",
-    "vision": "我们的愿景是创造能够触动人心的游戏体验，让玩家在虚拟世界中感受到真实情感的流动。我们追求的不是技术的堆砌，而是情感的表达与共鸣。",
+    "intro": "图南工作室（TunanStudio）深耕中国传统民俗与云南少数民族文化，以第九艺术——「游戏」为媒介，向世界传递文化之美。",
+    "vision": "同时，我们还在向小说、影视领域拓展，力求实现跨媒体多元突破，探索叙事的无限可能。",
     "membersTitle": "团队成员",
     "members": [
       {
@@ -62,10 +87,14 @@
         "role": "项目管理&鼓励师&御用模特&背锅专员&灵感缪斯",
         "description": "劣迹斑斑的员工，已被列入行业黑名单"
       }
-    ]
+    ],
+    "dropdown": {
+      "intro": "团队介绍",
+      "social": "关注我们"
+    }
   },
   "footer": {
-    "copyright": "© 2024 图南工作室 TunanStudio. All rights reserved.",
+    "copyright": "© 2024-2026 图南工作室 TunanStudio. All rights reserved.",
     "privacy": "隐私政策",
     "terms": "服务条款"
   },
@@ -73,7 +102,8 @@
     "loading": "加载中...",
     "error": "出错了",
     "retry": "重试",
-    "learnMore": "了解更多"
+    "learnMore": "了解更多",
+    "scrollDown": "向下滚动"
   },
   "language": {
     "current": "中文",

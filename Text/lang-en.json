@@ -5,8 +5,8 @@
     "tagline": "Exploring the Infinite Possibilities of Narrative"
   },
   "nav": {
-    "products": "Games",
-    "team": "Team",
+    "products": "Works",
+    "team": "About Us",
     "home": "Home",
     "social": "Follow Us"
   },
@@ -16,14 +16,14 @@
     "scroll": "Scroll Down"
   },
   "products": {
-    "title": "Our Games",
-    "subtitle": "Discover our meticulously crafted immersive gaming experiences",
-    "items": [
+    "title": "Games",
+    "subtitle": "Published Games",
+    "games": [
       {
         "id": "1",
         "title": "The Phantom Of The Museum",
         "description": "The Phantom Of The Museum is an indie game that combines elements of puzzle solving and exploration.",
-        "tags": ["2d", "RPG", "Puzzle"],
+        "tags": ["2D", "RPG", "Puzzle","Steam"],
         "link": "https://store.steampowered.com/app/3252050",
         "hasHoverImage": true
       },
@@ -31,17 +31,42 @@
         "id": "2",
         "title": "The Tale of Spring City",
         "description": "Ziqing Xu, a young girl from Spring City. Her father mysteriously disappeared soon after. During a strange turn of events, she suddenly gains the ability to see into the supernatural realm—the so-called \"Yin Yan.\" Will she be able to uncover the truth?",
-        "tags": ["2d", "Rich Story", "Interactive Fiction"],
+        "tags": ["2D", "Rich Story", "Interactive Fiction","Steam"],
         "link": "https://store.steampowered.com/app/4030660",
         "hasHoverImage": true
+      },
+      {
+        "id": "3",
+        "title": "JiaMa Poker",
+        "description": "JiaMa Poker is a strategy card game that combines elements of puzzle solving and exploration.",
+        "tags": ["2D", "Card Game", "Roguelike","Steam"],
+        "link": "https://store.steampowered.com/app/",
+        "hasHoverImage": true
       }
-    ]
+    ],
+    "novels": {
+      "title": "Novels",
+      "subtitle": "Published Novels",
+      "items": [
+        {
+          "id": "1",
+          "title": "The Tale of Spring City",
+          "author": "Kingdy Jin",
+          "cover": "../img/novels/novel-1.jpg",
+          "description": "Ziqing Xu, a young girl from Spring City. Her father mysteriously disappeared soon after. During a strange turn of events, she suddenly gains the ability to see into the supernatural realm—the so-called \"Yin Yan.\" Will she be able to uncover the truth?",
+          "genre": "Mystery",
+          "wordCount": "Available on WeRead",
+          "status": "800K words",
+          "link": "https://weread.qq.com/web/reader/cee32f50813aba6d5g016697"
+        }
+      ]
+    }
   },
   "team": {
     "title": "Our Team",
     "sectionTitle": "About TunanStudio",
-    "intro": "We are a passionate game development team. Since the studio's founding, we have been dedicated to crafting games with unique aesthetic styles and profound emotional resonance. We believe that every game is a brand new narrative adventure, and our goal is to help players discover their own stories and emotional connections within the games.",
-    "vision": "Our vision is to create game experiences that touch people's hearts, allowing players to feel the flow of real emotions in virtual worlds. We pursue not the accumulation of technology, but the expression of emotions and resonance.",
+    "intro": "Tunan Studio delves deeply into traditional Chinese folk customs and the cultures of ethnic minorities in Yunnan, using the ninth art form - games - as a medium to convey the beauty of culture to the world.",
+    "vision": "Meanwhile, we are also expanding into the fields of novels and films and television series, striving to achieve cross-media and multi-dimensional breakthroughs and explore the infinite possibilities of narrative.",
     "membersTitle": "Team Members",
     "members": [
       {
@@ -61,10 +86,14 @@
       "name": "King Pussy & King Pton",
       "role": "Project Manager & Motivator & Personal Model & Scapegoat & Inspiration Muse",
       "description": "Employees with a long list of misdeeds, have been blacklisted in the industry" }
-    ]
+    ],
+    "dropdown": {
+      "intro": "About Us",
+      "social": "Follow Us"
+    }
   },
   "footer": {
-    "copyright": "© 2024 TunanStudio. All rights reserved.",
+    "copyright": "© 2024-2026 TunanStudio. All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service"
   },
@@ -72,7 +101,8 @@
     "loading": "Loading...",
     "error": "Error occurred",
     "retry": "Retry",
-    "learnMore": "Learn More"
+    "learnMore": "Learn More",
+    "scrollDown": "Scroll Down"
   },
   "language": {
     "current": "English",

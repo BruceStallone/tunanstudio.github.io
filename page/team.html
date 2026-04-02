@@ -24,8 +24,13 @@
       <ul class="navbar-nav">
         <li><a href="/" class="nav-link" data-nav="home" data-i18n="nav.home">首页</a></li>
         <li><a href="/products" class="nav-link" data-nav="products" data-i18n="nav.products">产品介绍</a></li>
-        <li><a href="/team" class="nav-link" data-nav="team" data-i18n="nav.team">团队介绍</a></li>
-        <li><a href="/social" class="nav-link" data-nav="social" data-i18n="nav.social">联系我们</a></li>
+        <li class="nav-dropdown">
+          <a href="/team" class="nav-link nav-dropdown-toggle" data-nav="team" data-i18n="nav.team" aria-expanded="false" aria-haspopup="true">关于我们</a>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="/team/intro" class="nav-dropdown-item" data-nav="team-intro" role="menuitem">团队介绍</a>
+            <a href="/team/social" class="nav-dropdown-item" data-nav="team-social" role="menuitem">关注我们</a>
+          </div>
+        </li>
       </ul>
       
       <div class="navbar-actions">
@@ -42,9 +47,15 @@
     
     <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
       <ul class="mobile-nav">
+        <li><a href="/" class="mobile-nav-link" data-nav="home" data-i18n="nav.home">首页</a></li>
         <li><a href="/products" class="mobile-nav-link" data-nav="products" data-i18n="nav.products">产品介绍</a></li>
-        <li><a href="/team" class="mobile-nav-link" data-nav="team" data-i18n="nav.team">团队介绍</a></li>
-        <li><a href="/social" class="mobile-nav-link" data-nav="social" data-i18n="nav.social">联系我们</a></li>
+        <li class="mobile-nav-dropdown">
+          <a href="/team" class="mobile-nav-link mobile-nav-dropdown-toggle" data-nav="team" data-i18n="nav.team" aria-expanded="false">关于我们</a>
+          <div class="mobile-nav-dropdown-menu">
+            <a href="/team/intro" class="mobile-nav-dropdown-item" data-nav="team-intro">团队介绍</a>
+            <a href="/team/social" class="mobile-nav-dropdown-item" data-nav="team-social">关注我们</a>
+          </div>
+        </li>
       </ul>
       <div class="mobile-lang-switcher">
         <button class="lang-btn active" data-lang="zh-CN">中文</button>
